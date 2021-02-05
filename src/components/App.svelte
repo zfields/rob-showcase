@@ -2,14 +2,20 @@
   import {
 		Container,
 		Jumbotron,
-		Nav,
-		Navbar,
-		NavItem,
-		NavLink,
 		Col,
 		Row } from 'sveltestrap';
+	import queryString from "query-string";
 	import Settings from './Settings.svelte';
 	import Owner from './Owner.svelte';
+
+	export let deviceUID = '';
+	export let pin = '';
+
+	if (typeof window != 'undefined') {
+		const query = queryString.parse(window.location.search);
+		deviceUID = query["deviceUID"] ? query["deviceUID"] : '';
+		pin = query["pin"] ? query["pin"] : '';
+	}
 </script>
 
 <div class='logo'>
@@ -33,11 +39,11 @@
 			</Row>
 			<Row class="links">
 				<Col>
-					<a href='#'>Device Charts</a>
+					<a href='http://tt.safecast.org/id/note:dev:{deviceUID}'>Device Charts</a>
 				</Col>
 				<div class='separator'>|</div>
 				<Col>
-					<a href='#'>Global Map</a>
+					<a href='http://tt.safecast.org/map/note:dev:{deviceUID}'>Global Map</a>
 				</Col>
 			</Row>
 			<hr class='my-4' />
