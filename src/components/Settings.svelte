@@ -10,7 +10,7 @@
     Label
   } from 'sveltestrap';
 
-  let currentFrequency = 60;
+  let currentFrequency = 360;
 </script>
 
 <Row>

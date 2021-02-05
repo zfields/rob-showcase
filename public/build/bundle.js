@@ -175,6 +175,14 @@ var app = (function () {
     function set_current_component(component) {
         current_component = component;
     }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
     // TODO figure out if we still want to support
     // shorthand events, or if we want to implement
     // a real bubbling mechanism
@@ -6574,15 +6582,19 @@ var app = (function () {
     const file$d = "src/components/Slider.svelte";
 
     function create_fragment$d(ctx) {
-    	let div;
+    	let div0;
     	let input;
     	let updating_value;
-    	let t;
+    	let t0;
     	let output;
+    	let t1;
+    	let div1;
+    	let t3;
+    	let div2;
     	let current;
 
     	function input_value_binding(value) {
-    		/*input_value_binding*/ ctx[2].call(null, value);
+    		/*input_value_binding*/ ctx[1].call(null, value);
     	}
 
     	let input_props = {
@@ -6600,27 +6612,40 @@ var app = (function () {
 
     	input = new Input({ props: input_props, $$inline: true });
     	binding_callbacks.push(() => bind(input, "value", input_value_binding));
-    	input.$on("input", /*handleRangeUpdate*/ ctx[1]);
 
     	const block = {
     		c: function create() {
-    			div = element("div");
+    			div0 = element("div");
     			create_component(input.$$.fragment);
-    			t = space();
+    			t0 = space();
     			output = element("output");
+    			t1 = space();
+    			div1 = element("div");
+    			div1.textContent = "60 sec";
+    			t3 = space();
+    			div2 = element("div");
+    			div2.textContent = "6000 sec";
     			attr_dev(output, "class", "frequencyPopup");
-    			add_location(output, file$d, 37, 2, 1220);
-    			attr_dev(div, "class", "range-wrap");
-    			add_location(div, file$d, 34, 0, 1044);
+    			add_location(output, file$d, 33, 2, 1004);
+    			attr_dev(div0, "class", "frequency-wrap");
+    			add_location(div0, file$d, 30, 0, 853);
+    			attr_dev(div1, "class", "min-val");
+    			add_location(div1, file$d, 35, 0, 1052);
+    			attr_dev(div2, "class", "max-val");
+    			add_location(div2, file$d, 36, 0, 1086);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			mount_component(input, div, null);
-    			append_dev(div, t);
-    			append_dev(div, output);
+    			insert_dev(target, div0, anchor);
+    			mount_component(input, div0, null);
+    			append_dev(div0, t0);
+    			append_dev(div0, output);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, div1, anchor);
+    			insert_dev(target, t3, anchor);
+    			insert_dev(target, div2, anchor);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
@@ -6644,8 +6669,12 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div0);
     			destroy_component(input);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(div2);
     		}
     	};
 
@@ -6665,34 +6694,29 @@ var app = (function () {
     	validate_slots("Slider", slots, []);
     	let { frequency } = $$props;
 
-    	const handleRangeUpdate = event => {
-    		const el = event.target;
-    		(el.value - el.min) / (el.max - el.min) * 100;
-    	}; //el.style.background = 'linear-gradient(to right, #1b3b52 0%, #1b3b52 ' + value + '%, #fff ' + value + '%, white 100%)';
-
-    	const allRanges = document.querySelectorAll(".range-wrap");
-
-    	allRanges.forEach(wrap => {
-    		const range = wrap.querySelector("#sampleFrequency");
-    		const bubble = wrap.querySelector(".frequencyPopup");
-
-    		range.addEventListener("input", () => {
-    			setBubble(range, bubble);
-    		});
-
-    		setBubble(range, bubble);
-    	});
-
-    	const setBubble = (range, bubble) => {
-    		const val = range.value;
-    		const min = range.min ? range.min : 0;
-    		const max = range.max ? range.max : 100;
+    	const setPopup = (frequency, popup) => {
+    		const val = frequency.value;
+    		const min = frequency.min ? frequency.min : 0;
+    		const max = frequency.max ? frequency.max : 100;
     		const newVal = Number((val - min) * 100 / (max - min));
-    		bubble.innerHTML = val;
-
-    		// Sorta magic numbers based on size of the native UI thumb
-    		bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+    		popup.innerHTML = val;
+    		popup.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
     	};
+
+    	onMount(() => {
+    		const allRanges = document.querySelectorAll(".frequency-wrap");
+
+    		allRanges.forEach(wrap => {
+    			const frequency = wrap.querySelector("#sampleFrequency");
+    			const popup = wrap.querySelector(".frequencyPopup");
+
+    			frequency.addEventListener("input", () => {
+    				setPopup(frequency, popup);
+    			});
+
+    			setPopup(frequency, popup);
+    		});
+    	});
 
     	const writable_props = ["frequency"];
 
@@ -6709,13 +6733,7 @@ var app = (function () {
     		if ("frequency" in $$props) $$invalidate(0, frequency = $$props.frequency);
     	};
 
-    	$$self.$capture_state = () => ({
-    		Input,
-    		frequency,
-    		handleRangeUpdate,
-    		allRanges,
-    		setBubble
-    	});
+    	$$self.$capture_state = () => ({ onMount, Input, frequency, setPopup });
 
     	$$self.$inject_state = $$props => {
     		if ("frequency" in $$props) $$invalidate(0, frequency = $$props.frequency);
@@ -6725,7 +6743,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [frequency, handleRangeUpdate, input_value_binding];
+    	return [frequency, input_value_binding];
     }
 
     class Slider extends SvelteComponentDev {
@@ -6768,7 +6786,7 @@ var app = (function () {
     		c: function create() {
     			h4 = element("h4");
     			h4.textContent = "Device Settings";
-    			add_location(h4, file$e, 16, 7, 214);
+    			add_location(h4, file$e, 16, 7, 215);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h4, anchor);
@@ -7014,25 +7032,25 @@ var app = (function () {
     			option6.textContent = "PM10";
     			option0.__value = "PM2.5 (default)";
     			option0.value = option0.__value;
-    			add_location(option0, file$e, 31, 6, 580);
+    			add_location(option0, file$e, 31, 6, 581);
     			option1.__value = "Temp (°C)";
     			option1.value = option1.__value;
-    			add_location(option1, file$e, 32, 6, 619);
+    			add_location(option1, file$e, 32, 6, 620);
     			option2.__value = "Temp (°F)";
     			option2.value = option2.__value;
-    			add_location(option2, file$e, 33, 6, 656);
+    			add_location(option2, file$e, 33, 6, 657);
     			option3.__value = "Humidity";
     			option3.value = option3.__value;
-    			add_location(option3, file$e, 34, 6, 693);
+    			add_location(option3, file$e, 34, 6, 694);
     			option4.__value = "Barometric Pressure";
     			option4.value = option4.__value;
-    			add_location(option4, file$e, 35, 6, 725);
+    			add_location(option4, file$e, 35, 6, 726);
     			option5.__value = "PM1";
     			option5.value = option5.__value;
-    			add_location(option5, file$e, 36, 6, 768);
+    			add_location(option5, file$e, 36, 6, 769);
     			option6.__value = "PM10";
     			option6.value = option6.__value;
-    			add_location(option6, file$e, 37, 6, 795);
+    			add_location(option6, file$e, 37, 6, 796);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option0, anchor);
@@ -7612,7 +7630,7 @@ var app = (function () {
     function instance$e($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Settings", slots, []);
-    	let currentFrequency = 60;
+    	let currentFrequency = 360;
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -8669,7 +8687,7 @@ var app = (function () {
     			div.textContent = "|";
     			t2 = space();
     			create_component(navitem1.$$.fragment);
-    			attr_dev(div, "class", "separator svelte-15fbm4k");
+    			attr_dev(div, "class", "separator svelte-1139x89");
     			add_location(div, file$g, 36, 5, 817);
     		},
     		m: function mount(target, anchor) {
@@ -9437,7 +9455,7 @@ var app = (function () {
     			add_location(img, file$g, 15, 2, 232);
     			attr_dev(div, "class", "logo");
     			add_location(div, file$g, 14, 0, 211);
-    			attr_dev(main, "class", "svelte-15fbm4k");
+    			attr_dev(main, "class", "svelte-1139x89");
     			add_location(main, file$g, 18, 0, 294);
     		},
     		l: function claim(nodes) {

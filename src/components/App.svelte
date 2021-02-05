@@ -112,7 +112,7 @@
 	}
 
 	:global(.logo img) {
-		margin-top: 18%;
+		margin-top: 80px;
 	}
 
 	main {

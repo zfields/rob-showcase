@@ -1,42 +1,40 @@
 <script>
+  import { onMount } from 'svelte';
+
   import { Input } from 'sveltestrap';
   export let frequency;
 
-  const handleRangeUpdate = (event) => {
-    const el = event.target;
-    const value = (el.value-el.min)/(el.max-el.min)*100;
+  const setPopup = (frequency, popup) => {
+    const val = frequency.value;
+    const min = frequency.min ? frequency.min : 0;
+    const max = frequency.max ? frequency.max : 100;
+    const newVal = Number(((val - min) * 100) / (max - min));
+    popup.innerHTML = val;
 
-    //el.style.background = 'linear-gradient(to right, #1b3b52 0%, #1b3b52 ' + value + '%, #fff ' + value + '%, white 100%)';
+    popup.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
   };
 
-  const allRanges = document.querySelectorAll(".range-wrap");
-  allRanges.forEach(wrap => {
-    const range = wrap.querySelector("#sampleFrequency");
-    const bubble = wrap.querySelector(".frequencyPopup");
+  onMount(() => {
+    const allRanges = document.querySelectorAll(".frequency-wrap");
+    allRanges.forEach(wrap => {
+      const frequency = wrap.querySelector("#sampleFrequency");
+      const popup = wrap.querySelector(".frequencyPopup");
 
-    range.addEventListener("input", () => {
-      setBubble(range, bubble);
+      frequency.addEventListener("input", () => {
+        setPopup(frequency, popup);
+      });
+      setPopup(frequency, popup);
     });
-    setBubble(range, bubble);
   });
-
-const setBubble = (range, bubble) => {
-  const val = range.value;
-  const min = range.min ? range.min : 0;
-  const max = range.max ? range.max : 100;
-  const newVal = Number(((val - min) * 100) / (max - min));
-  bubble.innerHTML = val;
-
-  // Sorta magic numbers based on size of the native UI thumb
-  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
-}
 </script>
 
-<div class="range-wrap">
-  <Input on:input={handleRangeUpdate} type="range" name="frequency" id="sampleFrequency"
+<div class="frequency-wrap">
+  <Input type="range" name="frequency" id="sampleFrequency"
     min="60" max="6000" bind:value={frequency} step="15" />
   <output class="frequencyPopup"></output>
 </div>
+<div class="min-val">60 sec</div>
+<div class="max-val">6000 sec</div>
 
 <style>
   :global(#sampleFrequency) {
@@ -48,32 +46,30 @@ const setBubble = (range, bubble) => {
   }
 
   :global(.frequencyPopup) {
-    background: red;
-    color: white;
+    background: none;
+    color: #1B3A52;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
     padding: 4px 12px;
     position: absolute;
-    border-radius: 4px;
+    top: -200%;
     left: 50%;
     transform: translateX(-50%);
   }
 
   :global(.frequencyPopup::after) {
-    content: "";
+    content: " sec";
     position: absolute;
     width: 2px;
     height: 2px;
-    background: red;
-    top: -1px;
-    left: 50%;
+    color: #1B3A52;
+    top: 4px;
+    right: 15%;
   }
   :global(input[type=range]) {
-    -webkit-appearance: none;
     margin: 20px 0;
     width: 100%;
-  }
-
-  :global(input[type=range]:focus) {
-    outline: none;
   }
 
   :global(input[type=range]::-webkit-slider-runnable-track) {
@@ -95,46 +91,19 @@ const setBubble = (range, bubble) => {
     margin-top: -8px;
   }
 
-  :global(input[type=range]:focus::-webkit-slider-runnable-track) {
-    background: #ced9e1;
-  }
-
-  :global(.range-wrap) {
-    width: 500px;
+  :global(.frequency-wrap) {
+    width: 100%;
     position: relative;
   }
 
-  :global(.range-value) {
-    position: absolute;
-    top: -50%;
+  :global(.min-val, .max-val) {
+    font-size: 16px;
+    line-height: 19px;
+    color: #A0AFB9;
+    display: inline;
   }
 
-  :global(.range-value span) {
-    width: 30px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    background: #03a9f4;
-    color: #fff;
-    font-size: 12px;
-    display: block;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    border-radius: 6px;
-  }
-
-  :global(.range-value span:before) {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 10px solid #03a9f4;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    margin-top: -1px;
+  :global(.max-val) {
+    float: right;
   }
 </style>
