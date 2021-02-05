@@ -8,11 +8,35 @@
 
     //el.style.background = 'linear-gradient(to right, #1b3b52 0%, #1b3b52 ' + value + '%, #fff ' + value + '%, white 100%)';
   };
+
+  const allRanges = document.querySelectorAll(".range-wrap");
+  allRanges.forEach(wrap => {
+    const range = wrap.querySelector("#sampleFrequency");
+    const bubble = wrap.querySelector(".frequencyPopup");
+
+    range.addEventListener("input", () => {
+      setBubble(range, bubble);
+    });
+    setBubble(range, bubble);
+  });
+
+const setBubble = (range, bubble) => {
+  const val = range.value;
+  const min = range.min ? range.min : 0;
+  const max = range.max ? range.max : 100;
+  const newVal = Number(((val - min) * 100) / (max - min));
+  bubble.innerHTML = val;
+
+  // Sorta magic numbers based on size of the native UI thumb
+  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+}
 </script>
 
-<Input on:input={handleRangeUpdate} type="range" name="frequency" id="sampleFrequency"
-  min="60" max="6000" bind:value={frequency} step="15" />
-<output class="frequencyPopup"></output>
+<div class="range-wrap">
+  <Input on:input={handleRangeUpdate} type="range" name="frequency" id="sampleFrequency"
+    min="60" max="6000" bind:value={frequency} step="15" />
+  <output class="frequencyPopup"></output>
+</div>
 
 <style>
   :global(#sampleFrequency) {
@@ -64,7 +88,7 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #1b3b52;
+    background: #1B3A52;
     box-shadow: 0 0 4px 0 rgba(0,0,0, 1);
     cursor: pointer;
     -webkit-appearance: none;

@@ -56,26 +56,14 @@
   }
 
   :global(.form-group label) {
-    color: #638097;
+    color: #416681;
   }
 
   :global(.form-control) {
-    border: 1px solid #dee5ea;
+    border: 1px solid #DDE4E9;
   }
 
   :global(.form-control::placeholder) {
-    color: #b1bcc5;
-  }
-
-  /*:global(input[type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 1.2em;
-    cursor: pointer;
-    border: 1px solid #29334f;
-    overflow: hidden;
-  }*/
-
-  :global(input[type="range" i]::-webkit-slider-thumb) {
-    background-color: #dee5ea;
+    color: #A0AFB9;
   }
 </style>
