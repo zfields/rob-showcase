@@ -8460,14 +8460,14 @@ var app = (function () {
     const file$g = "src/components/App.svelte";
 
     // (32:4) <Col>
-    function create_default_slot_14(ctx) {
+    function create_default_slot_12$1(ctx) {
     	let h4;
 
     	const block = {
     		c: function create() {
     			h4 = element("h4");
     			h4.textContent = "Safecast";
-    			add_location(h4, file$g, 31, 9, 699);
+    			add_location(h4, file$g, 31, 9, 696);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h4, anchor);
@@ -8479,7 +8479,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_14.name,
+    		id: create_default_slot_12$1.name,
     		type: "slot",
     		source: "(32:4) <Col>",
     		ctx
@@ -8488,281 +8488,14 @@ var app = (function () {
     	return block;
     }
 
-    // (35:6) <NavLink href='#'>
-    function create_default_slot_13(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text("Device Charts");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_13.name,
-    		type: "slot",
-    		source: "(35:6) <NavLink href='#'>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (34:5) <NavItem>
-    function create_default_slot_12$1(ctx) {
-    	let navlink;
-    	let current;
-
-    	navlink = new NavLink({
-    			props: {
-    				href: "#",
-    				$$slots: { default: [create_default_slot_13] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(navlink.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(navlink, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const navlink_changes = {};
-
-    			if (dirty & /*$$scope*/ 1) {
-    				navlink_changes.$$scope = { dirty, ctx };
-    			}
-
-    			navlink.$set(navlink_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(navlink.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(navlink.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(navlink, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_12$1.name,
-    		type: "slot",
-    		source: "(34:5) <NavItem>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (39:6) <NavLink href='#'>
+    // (31:3) <Row>
     function create_default_slot_11$2(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text("Global Map");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_11$2.name,
-    		type: "slot",
-    		source: "(39:6) <NavLink href='#'>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (38:5) <NavItem>
-    function create_default_slot_10$2(ctx) {
-    	let navlink;
-    	let current;
-
-    	navlink = new NavLink({
-    			props: {
-    				href: "#",
-    				$$slots: { default: [create_default_slot_11$2] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(navlink.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(navlink, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const navlink_changes = {};
-
-    			if (dirty & /*$$scope*/ 1) {
-    				navlink_changes.$$scope = { dirty, ctx };
-    			}
-
-    			navlink.$set(navlink_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(navlink.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(navlink.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(navlink, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_10$2.name,
-    		type: "slot",
-    		source: "(38:5) <NavItem>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (33:4) <Nav>
-    function create_default_slot_9$2(ctx) {
-    	let navitem0;
-    	let t0;
-    	let div;
-    	let t2;
-    	let navitem1;
-    	let current;
-
-    	navitem0 = new NavItem({
-    			props: {
-    				$$slots: { default: [create_default_slot_12$1] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	navitem1 = new NavItem({
-    			props: {
-    				$$slots: { default: [create_default_slot_10$2] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(navitem0.$$.fragment);
-    			t0 = space();
-    			div = element("div");
-    			div.textContent = "|";
-    			t2 = space();
-    			create_component(navitem1.$$.fragment);
-    			attr_dev(div, "class", "separator svelte-1139x89");
-    			add_location(div, file$g, 36, 5, 817);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(navitem0, target, anchor);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, div, anchor);
-    			insert_dev(target, t2, anchor);
-    			mount_component(navitem1, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const navitem0_changes = {};
-
-    			if (dirty & /*$$scope*/ 1) {
-    				navitem0_changes.$$scope = { dirty, ctx };
-    			}
-
-    			navitem0.$set(navitem0_changes);
-    			const navitem1_changes = {};
-
-    			if (dirty & /*$$scope*/ 1) {
-    				navitem1_changes.$$scope = { dirty, ctx };
-    			}
-
-    			navitem1.$set(navitem1_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(navitem0.$$.fragment, local);
-    			transition_in(navitem1.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(navitem0.$$.fragment, local);
-    			transition_out(navitem1.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(navitem0, detaching);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(div);
-    			if (detaching) detach_dev(t2);
-    			destroy_component(navitem1, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_9$2.name,
-    		type: "slot",
-    		source: "(33:4) <Nav>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (31:3) <Navbar>
-    function create_default_slot_8$2(ctx) {
     	let col;
-    	let t;
-    	let nav;
     	let current;
 
     	col = new Col({
     			props: {
-    				$$slots: { default: [create_default_slot_14] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	nav = new Nav({
-    			props: {
-    				$$slots: { default: [create_default_slot_9$2] },
+    				$$slots: { default: [create_default_slot_12$1] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -8771,13 +8504,9 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			create_component(col.$$.fragment);
-    			t = space();
-    			create_component(nav.$$.fragment);
     		},
     		m: function mount(target, anchor) {
     			mount_component(col, target, anchor);
-    			insert_dev(target, t, anchor);
-    			mount_component(nav, target, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -8788,29 +8517,169 @@ var app = (function () {
     			}
 
     			col.$set(col_changes);
-    			const nav_changes = {};
-
-    			if (dirty & /*$$scope*/ 1) {
-    				nav_changes.$$scope = { dirty, ctx };
-    			}
-
-    			nav.$set(nav_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(col.$$.fragment, local);
-    			transition_in(nav.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(col.$$.fragment, local);
-    			transition_out(nav.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			destroy_component(col, detaching);
-    			if (detaching) detach_dev(t);
-    			destroy_component(nav, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_11$2.name,
+    		type: "slot",
+    		source: "(31:3) <Row>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (35:4) <Col>
+    function create_default_slot_10$2(ctx) {
+    	let a;
+
+    	const block = {
+    		c: function create() {
+    			a = element("a");
+    			a.textContent = "Device Charts";
+    			attr_dev(a, "href", "#");
+    			add_location(a, file$g, 35, 5, 768);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, a, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(a);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_10$2.name,
+    		type: "slot",
+    		source: "(35:4) <Col>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (39:4) <Col>
+    function create_default_slot_9$2(ctx) {
+    	let a;
+
+    	const block = {
+    		c: function create() {
+    			a = element("a");
+    			a.textContent = "Global Map";
+    			attr_dev(a, "href", "#");
+    			add_location(a, file$g, 39, 5, 859);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, a, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(a);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_9$2.name,
+    		type: "slot",
+    		source: "(39:4) <Col>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (34:3) <Row class="links">
+    function create_default_slot_8$2(ctx) {
+    	let col0;
+    	let t0;
+    	let div;
+    	let t2;
+    	let col1;
+    	let current;
+
+    	col0 = new Col({
+    			props: {
+    				$$slots: { default: [create_default_slot_10$2] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	col1 = new Col({
+    			props: {
+    				$$slots: { default: [create_default_slot_9$2] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(col0.$$.fragment);
+    			t0 = space();
+    			div = element("div");
+    			div.textContent = "|";
+    			t2 = space();
+    			create_component(col1.$$.fragment);
+    			attr_dev(div, "class", "separator svelte-1idhyfl");
+    			add_location(div, file$g, 37, 4, 813);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(col0, target, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div, anchor);
+    			insert_dev(target, t2, anchor);
+    			mount_component(col1, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const col0_changes = {};
+
+    			if (dirty & /*$$scope*/ 1) {
+    				col0_changes.$$scope = { dirty, ctx };
+    			}
+
+    			col0.$set(col0_changes);
+    			const col1_changes = {};
+
+    			if (dirty & /*$$scope*/ 1) {
+    				col1_changes.$$scope = { dirty, ctx };
+    			}
+
+    			col1.$set(col1_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(col0.$$.fragment, local);
+    			transition_in(col1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(col0.$$.fragment, local);
+    			transition_out(col1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(col0, detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(t2);
+    			destroy_component(col1, detaching);
     		}
     	};
 
@@ -8818,7 +8687,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_8$2.name,
     		type: "slot",
-    		source: "(31:3) <Navbar>",
+    		source: "(34:3) <Row class=\\\"links\\\">",
     		ctx
     	});
 
@@ -8834,19 +8703,30 @@ var app = (function () {
     	let t4;
     	let hr0;
     	let t5;
-    	let navbar;
+    	let row0;
     	let t6;
-    	let hr1;
+    	let row1;
     	let t7;
+    	let hr1;
+    	let t8;
     	let p2;
     	let i;
-    	let t8;
+    	let t9;
     	let a;
-    	let t10;
+    	let t11;
     	let current;
 
-    	navbar = new Navbar({
+    	row0 = new Row({
     			props: {
+    				$$slots: { default: [create_default_slot_11$2] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	row1 = new Row({
+    			props: {
+    				class: "links",
     				$$slots: { default: [create_default_slot_8$2] },
     				$$scope: { ctx }
     			},
@@ -8865,27 +8745,29 @@ var app = (function () {
     			t4 = space();
     			hr0 = element("hr");
     			t5 = space();
-    			create_component(navbar.$$.fragment);
+    			create_component(row0.$$.fragment);
     			t6 = space();
-    			hr1 = element("hr");
+    			create_component(row1.$$.fragment);
     			t7 = space();
+    			hr1 = element("hr");
+    			t8 = space();
     			p2 = element("p");
     			i = element("i");
-    			t8 = text("For help setting-up your Airnote, visit\n\t\t\t\t\t");
+    			t9 = text("For help setting-up your Airnote, visit\n\t\t\t\t\t");
     			a = element("a");
     			a.textContent = "start.airnote.live";
-    			t10 = text(".");
+    			t11 = text(".");
     			add_location(h5, file$g, 21, 3, 345);
     			add_location(p0, file$g, 24, 3, 416);
     			add_location(p1, file$g, 25, 35, 508);
     			attr_dev(hr0, "class", "my-4");
     			add_location(hr0, file$g, 29, 3, 658);
     			attr_dev(hr1, "class", "my-4");
-    			add_location(hr1, file$g, 42, 3, 951);
+    			add_location(hr1, file$g, 42, 3, 910);
     			attr_dev(a, "href", "https://start.airnote.live");
-    			add_location(a, file$g, 46, 5, 1036);
-    			add_location(i, file$g, 44, 4, 982);
-    			add_location(p2, file$g, 43, 3, 974);
+    			add_location(a, file$g, 46, 5, 995);
+    			add_location(i, file$g, 44, 4, 941);
+    			add_location(p2, file$g, 43, 3, 933);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h5, anchor);
@@ -8895,33 +8777,44 @@ var app = (function () {
     			insert_dev(target, t4, anchor);
     			insert_dev(target, hr0, anchor);
     			insert_dev(target, t5, anchor);
-    			mount_component(navbar, target, anchor);
+    			mount_component(row0, target, anchor);
     			insert_dev(target, t6, anchor);
-    			insert_dev(target, hr1, anchor);
+    			mount_component(row1, target, anchor);
     			insert_dev(target, t7, anchor);
+    			insert_dev(target, hr1, anchor);
+    			insert_dev(target, t8, anchor);
     			insert_dev(target, p2, anchor);
     			append_dev(p2, i);
-    			append_dev(i, t8);
+    			append_dev(i, t9);
     			append_dev(i, a);
-    			append_dev(i, t10);
+    			append_dev(i, t11);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			const navbar_changes = {};
+    			const row0_changes = {};
 
     			if (dirty & /*$$scope*/ 1) {
-    				navbar_changes.$$scope = { dirty, ctx };
+    				row0_changes.$$scope = { dirty, ctx };
     			}
 
-    			navbar.$set(navbar_changes);
+    			row0.$set(row0_changes);
+    			const row1_changes = {};
+
+    			if (dirty & /*$$scope*/ 1) {
+    				row1_changes.$$scope = { dirty, ctx };
+    			}
+
+    			row1.$set(row1_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(navbar.$$.fragment, local);
+    			transition_in(row0.$$.fragment, local);
+    			transition_in(row1.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(navbar.$$.fragment, local);
+    			transition_out(row0.$$.fragment, local);
+    			transition_out(row1.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -8932,10 +8825,12 @@ var app = (function () {
     			if (detaching) detach_dev(t4);
     			if (detaching) detach_dev(hr0);
     			if (detaching) detach_dev(t5);
-    			destroy_component(navbar, detaching);
+    			destroy_component(row0, detaching);
     			if (detaching) detach_dev(t6);
-    			if (detaching) detach_dev(hr1);
+    			destroy_component(row1, detaching);
     			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(hr1);
+    			if (detaching) detach_dev(t8);
     			if (detaching) detach_dev(p2);
     		}
     	};
@@ -8959,7 +8854,7 @@ var app = (function () {
     		c: function create() {
     			i = element("i");
     			i.textContent = "By using your Airnote device, or completing the optional fields\n\t\t\t\t\ton this page, you consent to share your device data and the optional\n\t\t\t\t\tcontact information with Blues Inc. for the purposes of publishing\n\t\t\t\t\tpublic maps and device dashboards.";
-    			add_location(i, file$g, 58, 4, 1223);
+    			add_location(i, file$g, 58, 4, 1182);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -9049,10 +8944,10 @@ var app = (function () {
     			t1 = space();
     			a = element("a");
     			a.textContent = "Notecard";
-    			add_location(br, file$g, 70, 23, 1573);
+    			add_location(br, file$g, 70, 23, 1532);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://blues.io/products");
-    			add_location(a, file$g, 71, 4, 1583);
+    			add_location(a, file$g, 71, 4, 1542);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
@@ -9148,10 +9043,10 @@ var app = (function () {
     			t1 = space();
     			a = element("a");
     			a.textContent = "Blues Inc.";
-    			add_location(br, file$g, 77, 17, 1709);
+    			add_location(br, file$g, 77, 17, 1668);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://blues.io");
-    			add_location(a, file$g, 78, 4, 1719);
+    			add_location(a, file$g, 78, 4, 1678);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
@@ -9314,12 +9209,12 @@ var app = (function () {
     			t8 = space();
     			create_component(row2.$$.fragment);
     			attr_dev(hr0, "class", "my-4");
-    			add_location(hr0, file$g, 52, 2, 1147);
+    			add_location(hr0, file$g, 52, 2, 1106);
     			attr_dev(hr1, "class", "my-4");
-    			add_location(hr1, file$g, 55, 2, 1182);
+    			add_location(hr1, file$g, 55, 2, 1141);
     			attr_dev(hr2, "class", "my-4");
-    			add_location(hr2, file$g, 67, 2, 1513);
-    			add_location(br, file$g, 74, 2, 1669);
+    			add_location(hr2, file$g, 67, 2, 1472);
+    			add_location(br, file$g, 74, 2, 1628);
     		},
     		m: function mount(target, anchor) {
     			mount_component(jumbotron, target, anchor);
@@ -9455,7 +9350,7 @@ var app = (function () {
     			add_location(img, file$g, 15, 2, 232);
     			attr_dev(div, "class", "logo");
     			add_location(div, file$g, 14, 0, 211);
-    			attr_dev(main, "class", "svelte-1139x89");
+    			attr_dev(main, "class", "svelte-1idhyfl");
     			add_location(main, file$g, 18, 0, 294);
     		},
     		l: function claim(nodes) {

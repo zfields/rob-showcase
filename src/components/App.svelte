@@ -28,18 +28,18 @@
 				view charts for your device and the global Safecast map.
 			</p>
 			<hr class='my-4' />
-			<Navbar>
+			<Row>
 				<Col><h4>Safecast</h4></Col>
-				<Nav>
-					<NavItem>
-						<NavLink href='#'>Device Charts</NavLink>
-					</NavItem>
-					<div class='separator'>|</div>
-					<NavItem>
-						<NavLink href='#'>Global Map</NavLink>
-					</NavItem>
-				</Nav>
-			</Navbar>
+			</Row>
+			<Row class="links">
+				<Col>
+					<a href='#'>Device Charts</a>
+				</Col>
+				<div class='separator'>|</div>
+				<Col>
+					<a href='#'>Global Map</a>
+				</Col>
+			</Row>
 			<hr class='my-4' />
 			<p>
 				<i>
@@ -100,6 +100,11 @@
 		text-align: center;
 		letter-spacing: 0.01em;
 		color: #050607;
+	}
+
+	:global(.links) {
+		text-align: center;
+		line-height: 36px;
 	}
 
 	:global(.logo) {
