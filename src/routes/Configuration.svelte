@@ -19,8 +19,6 @@
 	}
 </script>
 
-<main>
-	<Container>
 		{#if pin === ''}
 			<Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
 				<h4 class="alert-heading text-capitalize">No PIN provided</h4>
@@ -78,31 +76,7 @@
 			</Col>
 		</Row>
 
-		<hr class='my-4' />
-		<Row>
-			<Col>
-				Cloud-connected by <br/>
-				<a target='_blank' href='https://blues.io/products'>Notecard</a>
-			</Col>
-		</Row>
-		<br/>
-		<Row>
-			<Col>
-				Developed by <br/>
-				<a target='_blank' href='https://blues.io'>Blues Inc.</a>
-			</Col>
-		</Row>
-	</Container>
-</main>
-
 <style>
-	:global(body) {
-		font-family: 'Barlow', sans-serif;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 18px;
-		color: #1B3A52;
-	}
 
 	:global(h4) {
 		font-weight: bold;
@@ -118,11 +92,6 @@
 		line-height: 38px;
 	}
 
-	main {
-		text-align: center;
-		padding: 1em;
-		margin: 0 auto;
-	}
 
 	:global(.no-bg) {
 		background-color: #fff;
@@ -148,11 +117,5 @@
 	:global(.jumbotron) {
 		margin-bottom: 0;
 		padding: 0;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
 	}
 </style>
