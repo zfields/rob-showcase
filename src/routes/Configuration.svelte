@@ -5,22 +5,17 @@
 		Col,
 		Row } from 'sveltestrap';
 	import queryString from "query-string";
-	import Settings from './Settings.svelte';
-	import Owner from './Owner.svelte';
+	import Settings from '../components/Settings.svelte';
+	import Owner from '../components/Owner.svelte';
 
-	export let deviceUID = '';
+	export let deviceUID;
 	export let pin = '';
 
 	if (typeof window != 'undefined') {
 		const query = queryString.parse(window.location.search);
-		deviceUID = query["deviceUID"] ? query["deviceUID"] : '';
 		pin = query["pin"] ? query["pin"] : '';
 	}
 </script>
-
-<div class='logo'>
-		<img src='./images/airnote.svg' alt="Airnote Logo" />
-</div>
 
 <main>
 	<Container>
@@ -36,6 +31,9 @@
 			<hr class='my-4' />
 			<Row>
 				<Col><h4>Safecast</h4></Col>
+			</Row>
+			<Row>
+				<Col><p>dev:{deviceUID}</p></Col>
 			</Row>
 			<Row class="links">
 				<Col>
@@ -111,19 +109,6 @@
 	:global(.links) {
 		text-align: center;
 		line-height: 36px;
-	}
-
-	:global(.logo) {
-		background-color: #1B3A52;
-		width: 100%;
-		height: 200px;
-		padding: 0;
-		margin: 0;
-		text-align: center;
-	}
-
-	:global(.logo img) {
-		margin-top: 80px;
 	}
 
 	main {
