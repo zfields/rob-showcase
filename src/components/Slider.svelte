@@ -53,7 +53,7 @@
     line-height: 19px;
     padding: 4px 12px;
     position: absolute;
-    top: -200%;
+    top: -20%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -94,6 +94,7 @@
   :global(.frequency-wrap) {
     width: 100%;
     position: relative;
+    margin-top: 10px;
   }
 
   :global(.min-val, .max-val) {

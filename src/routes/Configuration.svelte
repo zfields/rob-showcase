@@ -1,5 +1,6 @@
 <script>
   import {
+		Alert,
 		Container,
 		Jumbotron,
 		Col,
@@ -9,7 +10,8 @@
 	import Owner from '../components/Owner.svelte';
 
 	export let deviceUID;
-	export let pin = '';
+	export let pin;
+	let visible = true;
 
 	if (typeof window != 'undefined') {
 		const query = queryString.parse(window.location.search);
@@ -19,6 +21,16 @@
 
 <main>
 	<Container>
+		{#if pin === ''}
+			<Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
+				<h4 class="alert-heading text-capitalize">Danger</h4>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				<a href="#todo" class="alert-link">
+					Also, alert-links are colored to match
+				</a>
+				.
+			</Alert>
+		{/if}
 		<Jumbotron class='no-bg'>
 			<h5>
 				Thank you for joining the global Airnote network!
@@ -30,10 +42,10 @@
 			</p>
 			<hr class='my-4' />
 			<Row>
-				<Col><h4>Safecast</h4></Col>
+				<Col><i>dev:{deviceUID}</i></Col>
 			</Row>
 			<Row>
-				<Col><p>dev:{deviceUID}</p></Col>
+				<Col><h4>Safecast</h4></Col>
 			</Row>
 			<Row class="links">
 				<Col>
@@ -108,7 +120,12 @@
 
 	:global(.links) {
 		text-align: center;
-		line-height: 36px;
+		line-height: 38px;
+	}
+
+	:global(.links div) {
+		display: inline;
+		vertical-align: middle;
 	}
 
 	main {
@@ -124,6 +141,8 @@
 	.separator {
 		font-size: 1.5rem;
 		color: #CED9E1;
+		margin-left: 5px;
+		margin-right: 5px;
 	}
 
 	:global(a) {

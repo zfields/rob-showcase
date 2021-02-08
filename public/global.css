@@ -32,6 +32,10 @@ label {
 	display: block;
 }
 
+input, select {
+	width: 100%;
+}
+
 input, button, select, textarea {
 	font-family: inherit;
 	font-size: inherit;

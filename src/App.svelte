@@ -29,4 +29,8 @@
 	:global(.logo img) {
 		margin-top: 80px;
 	}
+
+  :global(.btn) {
+    color: #f4f4f4;
+  }
 </style>
