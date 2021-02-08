@@ -17,7 +17,9 @@
 </Router>
 
 <style>
-	:global(.logo) {
+	@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
+
+  :global(.logo) {
 		background-color: #1B3A52;
 		width: 100%;
 		height: 200px;

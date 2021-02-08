@@ -23,12 +23,9 @@
 	<Container>
 		{#if pin === ''}
 			<Alert color="danger" isOpen={visible} toggle={() => (visible = false)}>
-				<h4 class="alert-heading text-capitalize">Danger</h4>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				<a href="#todo" class="alert-link">
-					Also, alert-links are colored to match
-				</a>
-				.
+				<h4 class="alert-heading text-capitalize">No PIN provided</h4>
+				You can view this page in read-only mode, but cannot edit device
+				configuration settings.
 			</Alert>
 		{/if}
 		<Jumbotron class='no-bg'>
@@ -65,9 +62,9 @@
 			</p>
 		</Jumbotron>
 
-		<Settings />
+		<Settings pin={pin} />
 		<hr class='my-4' />
-		<Owner />
+		<Owner pin={pin} />
 
 		<hr class='my-4' />
 		<Row>
@@ -99,8 +96,6 @@
 </main>
 
 <style>
-	@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
-
 	:global(body) {
 		font-family: 'Barlow', sans-serif;
 		font-style: normal;
@@ -123,11 +118,6 @@
 		line-height: 38px;
 	}
 
-	:global(.links div) {
-		display: inline;
-		vertical-align: middle;
-	}
-
 	main {
 		text-align: center;
 		padding: 1em;
@@ -141,8 +131,6 @@
 	.separator {
 		font-size: 1.5rem;
 		color: #CED9E1;
-		margin-left: 5px;
-		margin-right: 5px;
 	}
 
 	:global(a) {

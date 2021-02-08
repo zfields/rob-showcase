@@ -8,6 +8,8 @@
     Label,
     Row
   } from 'sveltestrap';
+
+  export let pin;
 </script>
 
 <Row>
@@ -18,6 +20,7 @@
   <FormGroup>
     <Label for="ownerName">Name</Label>
     <Input
+      disabled={pin === ''? 'disabled' : ''}
       type="text"
       name="ownerName"
       id="ownerName"
@@ -26,6 +29,7 @@
   <FormGroup>
     <Label for="companyName">Affiliation</Label>
     <Input
+      disabled={pin === ''? 'disabled' : ''}
       type="text"
       name="companyName"
       id="companyName"
@@ -34,6 +38,7 @@
   <FormGroup>
     <Label for="ownerEmail">Contact Email</Label>
     <Input
+      disabled={pin === ''? 'disabled' : ''}
       type="email"
       name="ownerEmail"
       id="ownerEmail"
@@ -43,6 +48,7 @@
 
 <Row>
   <Col>
-    <Button color="primary">Update Device Owner</Button>
+    <Button disabled={pin === ''? 'disabled' : ''}
+      color="primary">Update Device Owner</Button>
   </Col>
 </Row>

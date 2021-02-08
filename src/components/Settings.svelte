@@ -11,6 +11,7 @@
   } from 'sveltestrap';
 
   let currentFrequency = 360;
+  export let pin;
 </script>
 
 <Row>
@@ -21,6 +22,7 @@
   <FormGroup>
     <Label for="deviceName">Device name</Label>
     <Input
+      disabled={pin === ''? 'disabled' : ''}
       type="text"
       name="name"
       id="deviceName"
@@ -28,7 +30,8 @@
   </FormGroup>
   <FormGroup>
     <Label for="displayValue">LCD display value</Label>
-    <Input type="select" name="display" id="displayValue">
+    <Input disabled={pin === ''? 'disabled' : ''}
+      type="select" name="display" id="displayValue">
       <option>PM2.5 (default)</option>
       <option>Temp (&deg;C)</option>
       <option>Temp (&deg;F)</option>
@@ -40,13 +43,14 @@
   </FormGroup>
   <FormGroup>
     <Label for="sampleFrequency">Sample frequency</Label>
-    <Slider frequency={currentFrequency} />
+    <Slider pin={pin} frequency={currentFrequency} />
   </FormGroup>
 </Form>
 
 <Row>
   <Col>
-    <Button color="primary">Update Device Settings</Button>
+    <Button disabled={pin === ''? 'disabled' : ''}
+      color="primary">Update Device Settings</Button>
   </Col>
 </Row>
 
