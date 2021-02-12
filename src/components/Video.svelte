@@ -15,5 +15,14 @@
 </div>
 
 <style>
+  .video, iframe {
+    margin: 0 auto;
+    z-index: 9999;
+    position: relative;
+  }
 
+  iframe {
+    display: block;
+    border-style: none;
+  }
 </style>
