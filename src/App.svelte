@@ -3,7 +3,14 @@
 
 <div class="wrapper">
   <div class="video">
-    <iframe src="https://player.twitch.tv/?video=910355935&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="500" width="100%"></iframe>
+    <iframe
+      src="https://player.twitch.tv/?video=910355935&parent=localhost&parent=rob-showcase.vercel.app"
+      frameborder="0"
+      allowfullscreen="true"
+      scrolling="no"
+      height="500"
+      width="100%">
+    </iframe>
   </div>
 
   <div class="controller">
