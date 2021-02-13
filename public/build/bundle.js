@@ -339,7 +339,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			iframe = element("iframe");
-    			if (iframe.src !== (iframe_src_value = "https://player.twitch.tv/?video=910355935&parent=localhost&parent=rob-showcase.vercel.app")) attr_dev(iframe, "src", iframe_src_value);
+    			if (iframe.src !== (iframe_src_value = "https://player.twitch.tv/?channel=nesroblive&parent=localhost&parent=rob-showcase.vercel.app")) attr_dev(iframe, "src", iframe_src_value);
     			attr_dev(iframe, "title", "Twitch Stream Embed");
     			attr_dev(iframe, "frameborder", "0");
     			iframe.allowFullscreen = "true";
