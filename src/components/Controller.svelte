@@ -1,5 +1,7 @@
 <script>
   const API_URL = "https://rob-proxy.vercel.app/api";
+  let result = null;
+  let last_command = "";
 
   const sendCommand = async (command) => {
 		const res = await fetch(API_URL, {
@@ -10,6 +12,7 @@
 		const json = await res.json();
 		result = JSON.stringify(json);
     console.log(`Sent ${command}: ${result}`);
+    last_command = command;
 	};
 
 </script>
@@ -27,19 +30,19 @@
             <div class="cross hor"></div>
 
             <button id="Up" class="direction"
-              on:click={() => sendCommand("raise")>
+              on:click={() => sendCommand("raise")}>
                 <div class="arrow arrow-top"></div>
             </button>
             <button id="Down" class="direction"
-              on:click={() => sendCommand("lower")>
+              on:click={() => sendCommand("lower")}>
               <div class="arrow arrow-bottom"></div>
             </button>
             <button id="Left" class="direction"
-              on:click={() => sendCommand("left")>
+              on:click={() => sendCommand("left")}>
               <div class="arrow arrow-left"></div>
             </button>
             <button id="Right" class="direction"
-              on:click={() => sendCommand("right")>
+              on:click={() => sendCommand("right")}>
               <div class="arrow arrow-right"></div>
             </button>
 
@@ -59,7 +62,7 @@
             <div class="gray-bar big">
               <button id="Select" class="skinny-button select"></button>
               <button id="Start" class="skinny-button start"
-                on:click={() => sendCommand("recalibrate")></button>
+                on:click={() => sendCommand("recalibrate")}></button>
             </div>
             <div class="gray-bar last"></div>
           </div>
@@ -74,13 +77,13 @@
             <div class="buttons">
               <div class="button-pad">
                 <button id="A" class="button"
-                  on:click={() => sendCommand("open")></button>
+                  on:click={() => sendCommand("open")}></button>
                 <div class="button-letter">A</div>
               </div>
 
               <div class="button-pad">
                 <button id="B" class="button"
-                  on:click={() => sendCommand("close")></button>
+                  on:click={() => sendCommand("close")}></button>
                 <div class="button-letter">B</div>
               </div>
             </div>
@@ -89,6 +92,11 @@
     </div>
 
   </div>
+</div>
+<div class="result">
+  <p>
+    Last Command: {last_command}
+  </p>
 </div>
 
 <style>
@@ -419,5 +427,9 @@
     font-size: 1.25rem;
     right: 0;
     bottom: -1.75rem;
+  }
+
+  .result {
+    margin-left: 10px;
   }
 </style>
