@@ -6,7 +6,8 @@
   const sendCommand = async (command) => {
 		const res = await fetch(API_URL, {
 			method: 'POST',
-			body: JSON.stringify({"command": command})
+			headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({"command": command})
 		});
 
 		const json = await res.json();
