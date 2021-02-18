@@ -2,12 +2,13 @@
 
 Source for the Nintendo R.O.B Showcase project.
 
-## To Run Locally
+## Local Development
 
-```bash
-npm install
+First install the [node.js runtime](https://nodejs.org/en/)
+
+```sh
+npm install # get dependencies
+npm run dev # start a dev server
 ```
 
-```bash
-npm run start
-```
+The entry-point is [./src/App.svelte](./src/App.svelte).
