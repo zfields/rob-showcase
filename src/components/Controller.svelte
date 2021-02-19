@@ -17,6 +17,14 @@
 	};
 
 </script>
+<div class="result-wrapper">
+  <div class="result">
+    <p class="title">
+      Last R.O.B. Command
+    </p>
+    <p class="command">{last_command}</p>
+  </div>
+</div>
 
 <div class="controller">
   <div class="pad-area">
@@ -94,11 +102,6 @@
 
   </div>
 </div>
-<div class="result">
-  <p>
-    Last Command: {last_command}
-  </p>
-</div>
 
 <style>
   .controller {
@@ -130,6 +133,8 @@
   .pad-area {
     position: absolute;
     background: #2b3334;
+    background: linear-gradient(to bottom, #3a3e3b 0%, #232624 100%);
+    box-shadow: inset 0px 1px 2px 1px rgb(0 10 0 / 91%);
     left: 1rem;
     bottom: 1rem;
     width: 95%;
@@ -148,12 +153,12 @@
     width: 9rem;
     height: 9rem;
     top: 3.5rem;
-    left: 2rem;
   }
 
   .cross {
     position: absolute;
-    background: #111113;
+    background: #252725;
+    box-shadow: inset 3px 0px 0px 0px rgb(255 255 255 / 61%);
     border-radius: .2rem;
     z-index: 5;
   }
@@ -162,6 +167,7 @@
     left: 3rem;
     width: 3rem;
     height: 9rem;
+    box-shadow: inset 3px 0px 0px 0px rgb(255 255 255 / 61%);
   }
 
   .cross.hor {
@@ -196,7 +202,7 @@
     height: 0;
     border-top: .875rem solid transparent;
     border-bottom: .875rem solid transparent;
-    border-left: .875rem solid #2E2D2C;
+    border-left: .875rem solid #111111;
     position: absolute;
     z-index: 9999;
     right: .6875rem;
@@ -208,7 +214,7 @@
     position: absolute;
     width: .875rem;
     height: .875rem;
-    background-color: #2E2D2C;
+    background-color: #111111;
     right: .6rem;
     top: calc(50% - .4375rem);
   }
@@ -251,7 +257,7 @@
     height: 1.5rem;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    background-color: #2E2D2C;
+    background: linear-gradient(180deg, rgb(22, 22, 22) 30%, rgb(58, 58, 58) 100%);
     position: relative;
     z-index: 99999;
     top: 42%;
@@ -260,7 +266,7 @@
 
   .direction {
     position: absolute;
-    background: #111113;
+    background: #252725;
     border: none;
     width: 3rem;
     height: 3rem;
@@ -268,7 +274,7 @@
   }
 
   .direction:active{
-    background: #202021;
+    background: #1f1f1f;
   }
 
   #Up {
@@ -312,8 +318,10 @@
 
   .gray-bar.big {
     background: #d3d2ce;
+    border: 5px solid #e0ded4;
+    box-shadow: inset 0px 1px 3px 4px rgb(50 50 50 / 15%);
+    z-index: 3;
     height: 4rem;
-    border: 5px solid #BDBDBD;
   }
 
   .gray-bar.last {
@@ -346,7 +354,10 @@
 
   .skinny-button {
     position: absolute;
-    background: #2E2D2C;
+    background-color: #464646;
+    border-radius: 10px;
+    border: 1px solid #272723;
+    box-shadow: inset 0px 1px 0px 0px rgb(255 255 255 / 51%);
     top: 50%;
     transform: translateY(-50%);
     width: 6rem;
@@ -354,23 +365,16 @@
     border-radius: 2rem;
   }
 
-  .skinny-button,
-  .skinny-button:hover,
-  .skinny-button:active,
-  .skinny-button:focus {
-    border: 2.5px #000000 solid;
-  }
-
   .skinny-button:active {
-    background: #101211;
+    box-shadow: inset 0px 0px 0px 0px rgb(255 255 255 / 51%);
   }
 
   .skinny-button.select {
-    left: 1.75rem;
+    left: 1rem;
   }
 
   .skinny-button.start {
-    right: 1.75rem;
+    right: 1rem;
   }
 
   .logo-button-wrapper {
@@ -380,7 +384,6 @@
     margin: 0 auto;
     height: 16rem;
     top: 0;
-    left: -2rem;
   }
 
   .logo {
@@ -405,22 +408,21 @@
   }
 
   .button {
-    background: #ef070d;
+    background: linear-gradient(to bottom, #DF2015 0%, #f84936 100%);
+    border-radius: 50%;
+    float: left;
+    border: 1px rgba(0, 0, 0, 0.51) solid;
+    box-shadow: inset 0px 1.5px 1.5px 0px #fbfbfb, 0px 2px 2px 0px rgb(0 0 0 / 71%);
     width: 4rem;
     height: 4rem;
     margin: .5rem;
     border-radius: 50%;
   }
 
-  .button,
-  .button:hover,
-  .button:focus,
   .button:active {
-    border: 2px black solid;
-  }
-
-  .button:active{
-    background: #b3070b;
+    top: 1px;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+    box-shadow: inset 0px 0px 1.5px 0px #fbfbfb, 0px 2px 2px 0px rgb(0 0 0 / 21%);
   }
 
   .button-letter {
@@ -430,7 +432,33 @@
     bottom: -1.75rem;
   }
 
-  .result {
-    margin-left: 10px;
+  .result-wrapper {
+    background-color: #212529;
+    padding: .4rem;
   }
+  .result {
+    position: relative;
+    margin: 4px;
+    color: #fff;
+    background-color: #212529;
+    border-color: #fff;
+    padding: 1.5rem 2rem;
+    border-style: solid;
+    border-width: 3px;
+    text-align: center;
+    height: 4.5rem;
+  }
+  .result .title {
+    color: #fff;
+    background-color: #212529;
+    display: table;
+    padding: 0 .5rem;
+    margin: -2.1rem auto 1rem;
+    font-size: 1rem;
+  }
+  .result .command {
+    color:#d9403b;
+    margin: 1rem 0 0 0;
+  }
+
 </style>
