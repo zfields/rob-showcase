@@ -1,7 +1,11 @@
 <script>
   const API_URL = "https://rob-proxy.vercel.app/api";
   let result = null;
-  let last_command = "";
+  import { actions } from '../store.js';
+
+  const addToActionList = (command) => {
+    $actions = [...$actions, command];
+  }
 
   const sendCommand = async (command) => {
 		const res = await fetch(API_URL, {
@@ -13,18 +17,11 @@
 		const json = await res.json();
 		result = JSON.stringify(json);
     console.log(`Sent ${command}: ${result}`);
-    last_command = command;
+
+    addToActionList(command);
 	};
 
 </script>
-<div class="result-wrapper">
-  <div class="result">
-    <p class="title">
-      Last R.O.B. Command
-    </p>
-    <p class="command">{last_command}</p>
-  </div>
-</div>
 
 <div class="controller">
   <div class="pad-area">
@@ -430,35 +427,6 @@
     font-size: 1.25rem;
     right: 0;
     bottom: -1.75rem;
-  }
-
-  .result-wrapper {
-    background-color: #212529;
-    padding: .4rem;
-  }
-  .result {
-    position: relative;
-    margin: 4px;
-    color: #fff;
-    background-color: #212529;
-    border-color: #fff;
-    padding: 1.5rem 2rem;
-    border-style: solid;
-    border-width: 3px;
-    text-align: center;
-    height: 4.5rem;
-  }
-  .result .title {
-    color: #fff;
-    background-color: #212529;
-    display: table;
-    padding: 0 .5rem;
-    margin: -2.1rem auto 1rem;
-    font-size: 1rem;
-  }
-  .result .command {
-    color:#d9403b;
-    margin: 1rem 0 0 0;
   }
 
 </style>
