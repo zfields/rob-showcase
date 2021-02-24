@@ -36,19 +36,19 @@
             <div class="cross hor"></div>
 
             <button id="Up" class="direction"
-              on:click={() => sendCommand("raise")}>
+              on:click={() => sendCommand("UP")}>
                 <div class="arrow arrow-top"></div>
             </button>
             <button id="Down" class="direction"
-              on:click={() => sendCommand("lower")}>
+              on:click={() => sendCommand("DOWN")}>
               <div class="arrow arrow-bottom"></div>
             </button>
             <button id="Left" class="direction"
-              on:click={() => sendCommand("left")}>
+              on:click={() => sendCommand("LEFT")}>
               <div class="arrow arrow-left"></div>
             </button>
             <button id="Right" class="direction"
-              on:click={() => sendCommand("right")}>
+              on:click={() => sendCommand("RIGHT")}>
               <div class="arrow arrow-right"></div>
             </button>
 
@@ -68,7 +68,7 @@
             <div class="gray-bar big">
               <button id="Select" class="skinny-button select"></button>
               <button id="Start" class="skinny-button start"
-                on:click={() => sendCommand("recalibrate")}></button>
+                on:click={() => sendCommand("RECALIBRATE")}></button>
             </div>
             <div class="gray-bar last"></div>
           </div>
@@ -83,13 +83,13 @@
             <div class="buttons">
               <div class="button-pad">
                 <button id="A" class="button"
-                  on:click={() => sendCommand("open")}></button>
+                  on:click={() => sendCommand("OPEN")}></button>
                 <div class="button-letter">A</div>
               </div>
 
               <div class="button-pad">
                 <button id="B" class="button"
-                  on:click={() => sendCommand("close")}></button>
+                  on:click={() => sendCommand("CLOSE")}></button>
                 <div class="button-letter">B</div>
               </div>
             </div>
