@@ -63,7 +63,7 @@
             <div class="gray-bar"></div>
             <div class="gray-bar">
               <div class="label left-label">INFO</div>
-              <div class="label right-label">START</div>
+              <div class="label right-label">RECALIBRATE</div>
             </div>
             <div class="gray-bar big">
               <button id="Select" class="skinny-button select"></button>
@@ -77,7 +77,7 @@
         <div class="col">
           <div class="logo-button-wrapper">
             <div class="logo">
-              blues<span>wireless</span>
+              <a href="https://blues.io">blues<span>wireless</span></a>
             </div>
 
             <div class="buttons">
@@ -328,7 +328,7 @@
   }
 
   .label {
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-align: center;
     line-height: 2.5rem;
   }
@@ -344,9 +344,9 @@
   }
 
   .label::after {
-    display:block;
-    content:"";
-    clear:both;
+    display: block;
+    content: "";
+    clear: both;
   }
 
   .skinny-button {
@@ -367,11 +367,11 @@
   }
 
   .skinny-button.select {
-    left: 1rem;
+    left: 1.2rem;
   }
 
   .skinny-button.start {
-    right: 1rem;
+    right: 1.2rem;
   }
 
   .logo-button-wrapper {
@@ -388,6 +388,11 @@
     color: #9EBACC;
     margin-top: 2.75rem;
     margin-bottom: 4rem;
+  }
+
+  .logo a {
+    color: #9EBACC;
+    text-decoration: underline;
   }
 
   .logo span {

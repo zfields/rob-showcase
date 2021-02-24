@@ -341,13 +341,6 @@ var app = (function () {
         else
             dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
     }
-    function set_data_dev(text, data) {
-        data = '' + data;
-        if (text.wholeText === data)
-            return;
-        dispatch_dev('SvelteDOMSetData', { node: text, data });
-        text.data = data;
-    }
     function validate_slots(name, slot, keys) {
         for (const slot_key of Object.keys(slot)) {
             if (!~keys.indexOf(slot_key)) {
@@ -433,29 +426,72 @@ var app = (function () {
     const file = "src/components/Video.svelte";
 
     function create_fragment(ctx) {
-    	let div0;
-    	let iframe;
-    	let iframe_src_value;
-    	let t0;
+    	let div3;
     	let div2;
     	let div1;
-    	let p0;
-    	let t2;
-    	let p1;
+    	let p;
+    	let t1;
+    	let div0;
+    	let ol;
+    	let li0;
     	let t3;
+    	let li1;
+    	let t5;
+    	let li2;
+    	let t7;
+    	let li3;
+    	let t9;
+    	let li4;
+    	let t11;
+    	let iframe;
+    	let iframe_src_value;
 
     	const block = {
     		c: function create() {
-    			div0 = element("div");
-    			iframe = element("iframe");
-    			t0 = space();
+    			div3 = element("div");
     			div2 = element("div");
     			div1 = element("div");
-    			p0 = element("p");
-    			p0.textContent = "Last R.O.B. Command";
-    			t2 = space();
-    			p1 = element("p");
-    			t3 = text(/*last_command*/ ctx[0]);
+    			p = element("p");
+    			p.textContent = "Commands";
+    			t1 = space();
+    			div0 = element("div");
+    			ol = element("ol");
+    			li0 = element("li");
+    			li0.textContent = "Left";
+    			t3 = space();
+    			li1 = element("li");
+    			li1.textContent = "Right";
+    			t5 = space();
+    			li2 = element("li");
+    			li2.textContent = "Up";
+    			t7 = space();
+    			li3 = element("li");
+    			li3.textContent = "Down";
+    			t9 = space();
+    			li4 = element("li");
+    			li4.textContent = "Close";
+    			t11 = space();
+    			iframe = element("iframe");
+    			attr_dev(p, "class", "title svelte-1dphutz");
+    			add_location(p, file, 15, 6, 321);
+    			attr_dev(li0, "class", "done svelte-1dphutz");
+    			add_location(li0, file, 21, 10, 476);
+    			attr_dev(li1, "class", "done svelte-1dphutz");
+    			add_location(li1, file, 22, 10, 513);
+    			attr_dev(li2, "class", " svelte-1dphutz");
+    			add_location(li2, file, 23, 10, 551);
+    			attr_dev(li3, "class", " svelte-1dphutz");
+    			add_location(li3, file, 24, 10, 582);
+    			attr_dev(li4, "class", " svelte-1dphutz");
+    			add_location(li4, file, 25, 10, 615);
+    			attr_dev(ol, "class", "svelte-1dphutz");
+    			add_location(ol, file, 20, 8, 461);
+    			attr_dev(div0, "class", "command-list svelte-1dphutz");
+    			add_location(div0, file, 19, 6, 426);
+    			attr_dev(div1, "class", "result svelte-1dphutz");
+    			add_location(div1, file, 14, 4, 294);
+    			attr_dev(div2, "class", "result-wrapper svelte-1dphutz");
+    			add_location(div2, file, 13, 2, 261);
     			if (iframe.src !== (iframe_src_value = "https://player.twitch.tv/?channel=nesroblive&parent=localhost&parent=rob-showcase.vercel.app")) attr_dev(iframe, "src", iframe_src_value);
     			attr_dev(iframe, "title", "Twitch Stream Embed");
     			attr_dev(iframe, "frameborder", "0");
@@ -463,42 +499,39 @@ var app = (function () {
     			attr_dev(iframe, "scrolling", "no");
     			attr_dev(iframe, "height", "500");
     			attr_dev(iframe, "width", "100%");
-    			attr_dev(iframe, "class", "svelte-hc5c5e");
-    			add_location(iframe, file, 12, 2, 260);
-    			attr_dev(div0, "class", "video svelte-hc5c5e");
-    			add_location(div0, file, 11, 0, 238);
-    			attr_dev(p0, "class", "title svelte-hc5c5e");
-    			add_location(p0, file, 24, 4, 579);
-    			attr_dev(p1, "class", "command svelte-hc5c5e");
-    			add_location(p1, file, 27, 4, 636);
-    			attr_dev(div1, "class", "result svelte-hc5c5e");
-    			add_location(div1, file, 23, 2, 554);
-    			attr_dev(div2, "class", "result-wrapper svelte-hc5c5e");
-    			add_location(div2, file, 22, 0, 523);
+    			attr_dev(iframe, "class", "svelte-1dphutz");
+    			add_location(iframe, file, 31, 2, 689);
+    			attr_dev(div3, "class", "video svelte-1dphutz");
+    			add_location(div3, file, 11, 0, 238);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div0, anchor);
-    			append_dev(div0, iframe);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, div2, anchor);
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div2);
     			append_dev(div2, div1);
-    			append_dev(div1, p0);
-    			append_dev(div1, t2);
-    			append_dev(div1, p1);
-    			append_dev(p1, t3);
+    			append_dev(div1, p);
+    			append_dev(div1, t1);
+    			append_dev(div1, div0);
+    			append_dev(div0, ol);
+    			append_dev(ol, li0);
+    			append_dev(ol, t3);
+    			append_dev(ol, li1);
+    			append_dev(ol, t5);
+    			append_dev(ol, li2);
+    			append_dev(ol, t7);
+    			append_dev(ol, li3);
+    			append_dev(ol, t9);
+    			append_dev(ol, li4);
+    			append_dev(div3, t11);
+    			append_dev(div3, iframe);
     		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*last_command*/ 1) set_data_dev(t3, /*last_command*/ ctx[0]);
-    		},
+    		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div0);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(div3);
     		}
     	};
 
@@ -520,7 +553,7 @@ var app = (function () {
 
     	actions.subscribe(updatedActions => {
     		if (updatedActions.length > 0) {
-    			$$invalidate(0, last_command = updatedActions[updatedActions.length - 1]);
+    			last_command = updatedActions[updatedActions.length - 1];
     		}
     	});
 
@@ -533,14 +566,14 @@ var app = (function () {
     	$$self.$capture_state = () => ({ actions, last_command });
 
     	$$self.$inject_state = $$props => {
-    		if ("last_command" in $$props) $$invalidate(0, last_command = $$props.last_command);
+    		if ("last_command" in $$props) last_command = $$props.last_command;
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [last_command];
+    	return [];
     }
 
     class Video extends SvelteComponentDev {
@@ -611,6 +644,7 @@ var app = (function () {
     	let div27;
     	let div26;
     	let div20;
+    	let a;
     	let t18;
     	let span;
     	let t20;
@@ -667,7 +701,7 @@ var app = (function () {
     			div13.textContent = "INFO";
     			t12 = space();
     			div14 = element("div");
-    			div14.textContent = "START";
+    			div14.textContent = "RECALIBRATE";
     			t14 = space();
     			div16 = element("div");
     			button4 = element("button");
@@ -679,6 +713,7 @@ var app = (function () {
     			div27 = element("div");
     			div26 = element("div");
     			div20 = element("div");
+    			a = element("a");
     			t18 = text("blues");
     			span = element("span");
     			span.textContent = "wireless";
@@ -695,93 +730,96 @@ var app = (function () {
     			t24 = space();
     			div23 = element("div");
     			div23.textContent = "B";
-    			attr_dev(div0, "class", "cross-border vert svelte-cvmmed");
+    			attr_dev(div0, "class", "cross-border vert svelte-r8jti7");
     			add_location(div0, file$1, 31, 12, 726);
-    			attr_dev(div1, "class", "cross-border hor svelte-cvmmed");
+    			attr_dev(div1, "class", "cross-border hor svelte-r8jti7");
     			add_location(div1, file$1, 32, 12, 776);
-    			attr_dev(div2, "class", "cross vert svelte-cvmmed");
+    			attr_dev(div2, "class", "cross vert svelte-r8jti7");
     			add_location(div2, file$1, 34, 12, 826);
-    			attr_dev(div3, "class", "cross hor svelte-cvmmed");
+    			attr_dev(div3, "class", "cross hor svelte-r8jti7");
     			add_location(div3, file$1, 35, 12, 869);
-    			attr_dev(div4, "class", "arrow arrow-top svelte-cvmmed");
+    			attr_dev(div4, "class", "arrow arrow-top svelte-r8jti7");
     			add_location(div4, file$1, 39, 16, 1015);
     			attr_dev(button0, "id", "Up");
-    			attr_dev(button0, "class", "direction svelte-cvmmed");
+    			attr_dev(button0, "class", "direction svelte-r8jti7");
     			add_location(button0, file$1, 37, 12, 912);
-    			attr_dev(div5, "class", "arrow arrow-bottom svelte-cvmmed");
+    			attr_dev(div5, "class", "arrow arrow-bottom svelte-r8jti7");
     			add_location(div5, file$1, 43, 14, 1188);
     			attr_dev(button1, "id", "Down");
-    			attr_dev(button1, "class", "direction svelte-cvmmed");
+    			attr_dev(button1, "class", "direction svelte-r8jti7");
     			add_location(button1, file$1, 41, 12, 1085);
-    			attr_dev(div6, "class", "arrow arrow-left svelte-cvmmed");
+    			attr_dev(div6, "class", "arrow arrow-left svelte-r8jti7");
     			add_location(div6, file$1, 47, 14, 1363);
     			attr_dev(button2, "id", "Left");
-    			attr_dev(button2, "class", "direction svelte-cvmmed");
+    			attr_dev(button2, "class", "direction svelte-r8jti7");
     			add_location(button2, file$1, 45, 12, 1261);
-    			attr_dev(div7, "class", "arrow arrow-right svelte-cvmmed");
+    			attr_dev(div7, "class", "arrow arrow-right svelte-r8jti7");
     			add_location(div7, file$1, 51, 14, 1538);
     			attr_dev(button3, "id", "Right");
-    			attr_dev(button3, "class", "direction svelte-cvmmed");
+    			attr_dev(button3, "class", "direction svelte-r8jti7");
     			add_location(button3, file$1, 49, 12, 1434);
-    			attr_dev(div8, "class", "circle svelte-cvmmed");
+    			attr_dev(div8, "class", "circle svelte-r8jti7");
     			add_location(div8, file$1, 54, 12, 1611);
-    			attr_dev(div9, "class", "dpad-wrapper svelte-cvmmed");
+    			attr_dev(div9, "class", "dpad-wrapper svelte-r8jti7");
     			add_location(div9, file$1, 30, 10, 687);
-    			attr_dev(div10, "class", "col svelte-cvmmed");
+    			attr_dev(div10, "class", "col svelte-r8jti7");
     			add_location(div10, file$1, 29, 8, 659);
-    			attr_dev(div11, "class", "gray-bar first svelte-cvmmed");
+    			attr_dev(div11, "class", "gray-bar first svelte-r8jti7");
     			add_location(div11, file$1, 61, 12, 1741);
-    			attr_dev(div12, "class", "gray-bar svelte-cvmmed");
+    			attr_dev(div12, "class", "gray-bar svelte-r8jti7");
     			add_location(div12, file$1, 62, 12, 1788);
-    			attr_dev(div13, "class", "label left-label svelte-cvmmed");
+    			attr_dev(div13, "class", "label left-label svelte-r8jti7");
     			add_location(div13, file$1, 64, 14, 1866);
-    			attr_dev(div14, "class", "label right-label svelte-cvmmed");
+    			attr_dev(div14, "class", "label right-label svelte-r8jti7");
     			add_location(div14, file$1, 65, 14, 1921);
-    			attr_dev(div15, "class", "gray-bar svelte-cvmmed");
+    			attr_dev(div15, "class", "gray-bar svelte-r8jti7");
     			add_location(div15, file$1, 63, 12, 1829);
     			attr_dev(button4, "id", "Select");
-    			attr_dev(button4, "class", "skinny-button select svelte-cvmmed");
-    			add_location(button4, file$1, 68, 14, 2036);
+    			attr_dev(button4, "class", "skinny-button select svelte-r8jti7");
+    			add_location(button4, file$1, 68, 14, 2042);
     			attr_dev(button5, "id", "Start");
-    			attr_dev(button5, "class", "skinny-button start svelte-cvmmed");
-    			add_location(button5, file$1, 69, 14, 2109);
-    			attr_dev(div16, "class", "gray-bar big svelte-cvmmed");
-    			add_location(div16, file$1, 67, 12, 1995);
-    			attr_dev(div17, "class", "gray-bar last svelte-cvmmed");
-    			add_location(div17, file$1, 72, 12, 2257);
-    			attr_dev(div18, "class", "center svelte-cvmmed");
+    			attr_dev(button5, "class", "skinny-button start svelte-r8jti7");
+    			add_location(button5, file$1, 69, 14, 2115);
+    			attr_dev(div16, "class", "gray-bar big svelte-r8jti7");
+    			add_location(div16, file$1, 67, 12, 2001);
+    			attr_dev(div17, "class", "gray-bar last svelte-r8jti7");
+    			add_location(div17, file$1, 72, 12, 2263);
+    			attr_dev(div18, "class", "center svelte-r8jti7");
     			add_location(div18, file$1, 60, 10, 1708);
-    			attr_dev(div19, "class", "col svelte-cvmmed");
+    			attr_dev(div19, "class", "col svelte-r8jti7");
     			add_location(div19, file$1, 59, 8, 1680);
-    			attr_dev(span, "class", "svelte-cvmmed");
-    			add_location(span, file$1, 79, 19, 2444);
-    			attr_dev(div20, "class", "logo svelte-cvmmed");
-    			add_location(div20, file$1, 78, 12, 2406);
+    			attr_dev(span, "class", "svelte-r8jti7");
+    			add_location(span, file$1, 79, 46, 2477);
+    			attr_dev(a, "href", "https://blues.io");
+    			attr_dev(a, "class", "svelte-r8jti7");
+    			add_location(a, file$1, 79, 14, 2445);
+    			attr_dev(div20, "class", "logo svelte-r8jti7");
+    			add_location(div20, file$1, 78, 12, 2412);
     			attr_dev(button6, "id", "A");
-    			attr_dev(button6, "class", "button svelte-cvmmed");
-    			add_location(button6, file$1, 84, 16, 2575);
-    			attr_dev(div21, "class", "button-letter svelte-cvmmed");
-    			add_location(div21, file$1, 86, 16, 2686);
-    			attr_dev(div22, "class", "button-pad svelte-cvmmed");
-    			add_location(div22, file$1, 83, 14, 2534);
+    			attr_dev(button6, "class", "button svelte-r8jti7");
+    			add_location(button6, file$1, 84, 16, 2612);
+    			attr_dev(div21, "class", "button-letter svelte-r8jti7");
+    			add_location(div21, file$1, 86, 16, 2723);
+    			attr_dev(div22, "class", "button-pad svelte-r8jti7");
+    			add_location(div22, file$1, 83, 14, 2571);
     			attr_dev(button7, "id", "B");
-    			attr_dev(button7, "class", "button svelte-cvmmed");
-    			add_location(button7, file$1, 90, 16, 2798);
-    			attr_dev(div23, "class", "button-letter svelte-cvmmed");
-    			add_location(div23, file$1, 92, 16, 2910);
-    			attr_dev(div24, "class", "button-pad svelte-cvmmed");
-    			add_location(div24, file$1, 89, 14, 2757);
+    			attr_dev(button7, "class", "button svelte-r8jti7");
+    			add_location(button7, file$1, 90, 16, 2835);
+    			attr_dev(div23, "class", "button-letter svelte-r8jti7");
+    			add_location(div23, file$1, 92, 16, 2947);
+    			attr_dev(div24, "class", "button-pad svelte-r8jti7");
+    			add_location(div24, file$1, 89, 14, 2794);
     			attr_dev(div25, "class", "buttons");
-    			add_location(div25, file$1, 82, 12, 2498);
-    			attr_dev(div26, "class", "logo-button-wrapper svelte-cvmmed");
-    			add_location(div26, file$1, 77, 10, 2360);
-    			attr_dev(div27, "class", "col svelte-cvmmed");
-    			add_location(div27, file$1, 76, 8, 2332);
-    			attr_dev(div28, "class", "row svelte-cvmmed");
+    			add_location(div25, file$1, 82, 12, 2535);
+    			attr_dev(div26, "class", "logo-button-wrapper svelte-r8jti7");
+    			add_location(div26, file$1, 77, 10, 2366);
+    			attr_dev(div27, "class", "col svelte-r8jti7");
+    			add_location(div27, file$1, 76, 8, 2338);
+    			attr_dev(div28, "class", "row svelte-r8jti7");
     			add_location(div28, file$1, 28, 4, 633);
-    			attr_dev(div29, "class", "pad-area svelte-cvmmed");
+    			attr_dev(div29, "class", "pad-area svelte-r8jti7");
     			add_location(div29, file$1, 26, 2, 605);
-    			attr_dev(div30, "class", "controller svelte-cvmmed");
+    			attr_dev(div30, "class", "controller svelte-r8jti7");
     			add_location(div30, file$1, 25, 0, 578);
     		},
     		l: function claim(nodes) {
@@ -836,8 +874,9 @@ var app = (function () {
     			append_dev(div28, div27);
     			append_dev(div27, div26);
     			append_dev(div26, div20);
-    			append_dev(div20, t18);
-    			append_dev(div20, span);
+    			append_dev(div20, a);
+    			append_dev(a, t18);
+    			append_dev(a, span);
     			append_dev(div26, t20);
     			append_dev(div26, div25);
     			append_dev(div25, div22);
