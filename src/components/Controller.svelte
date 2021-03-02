@@ -1,25 +1,29 @@
 <script>
-  const API_URL = "https://rob-proxy.vercel.app/api";
-  let result = null;
-  import { actions } from '../store.js';
 
-  const addToActionList = (command) => {
+const API_URL = "https://rob-proxy.vercel.app/api";
+const LOCALHOST_API_URL = "http://localhost:3000/api";
+
+let result = null;
+import { actions } from '../store.js';
+
+const addToActionList = (command) => {
     $actions = [...$actions, command];
-  }
+}
 
-  const sendCommand = async (command) => {
-		const res = await fetch(API_URL, {
-			method: 'POST',
-			headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({"command": command})
-		});
-
-		const json = await res.json();
-		result = JSON.stringify(json);
-    console.log(`Sent ${command}: ${result}`);
+const sendCommand = async (command) => {
+    fetch(API_URL, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({"command": command})
+    })
+    .then(response => response.json())
+    .then(data => {
+        result = JSON.stringify(data);
+        console.log(`Sent ${command}: ${result}`);
+    });
 
     addToActionList(command);
-	};
+};
 
 </script>
 
@@ -66,7 +70,8 @@
               <div class="label right-label">START</div>
             </div>
             <div class="gray-bar big">
-              <button id="Select" class="skinny-button select"></button>
+              <button id="Select" class="skinny-button select"
+                on:click={() => window.open('https://www.hackster.io/zachary_fields/cellular-r-o-b-with-blues-wireless-38ac41', '_blank')}></button>
               <button id="Start" class="skinny-button start"
                 on:click={() => sendCommand("RECALIBRATE")}></button>
             </div>
@@ -77,7 +82,7 @@
         <div class="col">
           <div class="logo-button-wrapper">
             <div class="logo">
-              blues<span>wireless</span>
+                <a href="https://blues.io">blues<span>wireless</span></a>
             </div>
 
             <div class="buttons">
@@ -328,7 +333,7 @@
   }
 
   .label {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     text-align: center;
     line-height: 2.5rem;
   }
@@ -336,6 +341,7 @@
   .label.left-label {
     width: 50%;
     float: left;
+    padding-left: 0.5rem;
   }
 
   .label.right-label {
@@ -344,9 +350,9 @@
   }
 
   .label::after {
-    display:block;
-    content:"";
-    clear:both;
+    display: block;
+    content: "";
+    clear: both;
   }
 
   .skinny-button {
@@ -357,7 +363,7 @@
     box-shadow: inset 0px 1px 0px 0px rgb(255 255 255 / 51%);
     top: 50%;
     transform: translateY(-50%);
-    width: 6rem;
+    width: 4.5rem;
     height: 1.75rem;
     border-radius: 2rem;
   }
@@ -367,11 +373,11 @@
   }
 
   .skinny-button.select {
-    left: 1rem;
+    left: 2rem;
   }
 
   .skinny-button.start {
-    right: 1rem;
+    right: 2rem;
   }
 
   .logo-button-wrapper {
@@ -388,6 +394,12 @@
     color: #9EBACC;
     margin-top: 2.75rem;
     margin-bottom: 4rem;
+  }
+
+  .logo a {
+    font-size: 1.55rem;
+    color: #9EBACC;
+    text-decoration: none;
   }
 
   .logo span {
