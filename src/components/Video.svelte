@@ -4,7 +4,7 @@
 
   actions.subscribe(updatedActions => {
     if (updatedActions.length > 0) {
-      last_command = updatedActions[updatedActions.length-1];
+      last_command = updatedActions[updatedActions.length-1].command;
     }
   });
 </script>
