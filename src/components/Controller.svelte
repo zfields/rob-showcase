@@ -2,6 +2,7 @@
     const LOCAL_DEV = false;
     let API_URL;
     let STATUS_URL;
+
     if (LOCAL_DEV) {
         API_URL = "http://localhost:3000/api";
         STATUS_URL = "http://localhost:3000/status?";
@@ -14,7 +15,9 @@
     import { actions } from "../store.js";
 
     const addToActionList = (command) => {
+        const index = $actions.length;
         $actions = [...$actions, command];
+        return index;
     };
 
     const delay = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -98,16 +101,16 @@
             });
 
         // Record request in store
-        addToActionList(cmdObj);
+        const index = addToActionList(cmdObj);
 
         // Set command status to AWAITING_NOTEHUB_IO
-        cmdObj.status = "AWAITING_NOTEHUB_IO";
-        console.log("status: ", cmdObj.status);
+        $actions[index].status = "AWAITING_NOTEHUB_IO";
+        console.log("status: ", $actions[index].status);
         await poll(
             async function () {
                 // Check if command has arrived at Notehub.io
                 let response = await fetch(
-                    STATUS_URL + new URLSearchParams(cmdObj),
+                    STATUS_URL + new URLSearchParams($actions[index]),
                     {
                         mode: "cors",
                     }
@@ -118,20 +121,20 @@
             1500,
             100
         ).catch((error) => {
-            cmdObj.status = "COMMAND FAILED";
+            $actions[index].status = "COMMAND FAILED";
             throw new Error(
                 "Failed to send command to Notehub.io!\n" + error + "\n"
             );
         });
 
         // Set command status to AWAITING_CELL_TOWER
-        cmdObj.status = "AWAITING_CELL_TOWER";
-        console.log("status: ", cmdObj.status);
+        $actions[index].status = "AWAITING_CELL_TOWER";
+        console.log("status: ", $actions[index].status);
         await poll(
             async function () {
                 // Check if Notehub.io sent Note to R.O.B.
                 let response = await fetch(
-                    STATUS_URL + new URLSearchParams(cmdObj),
+                    STATUS_URL + new URLSearchParams($actions[index]),
                     {
                         mode: "cors",
                     }
@@ -146,13 +149,13 @@
         });
 
         // Set command status to AWAITING_ROB
-        cmdObj.status = "AWAITING_ROB";
-        console.log("status: ", cmdObj.status);
+        $actions[index].status = "AWAITING_ROB";
+        console.log("status: ", $actions[index].status);
         await poll(
             async function () {
                 // Check if R.O.B. processed command
                 let response = await fetch(
-                    STATUS_URL + new URLSearchParams(cmdObj),
+                    STATUS_URL + new URLSearchParams($actions[index]),
                     {
                         mode: "cors",
                     }
@@ -161,21 +164,21 @@
                 return 202 == response.status;
             },
             300000,
-            1000
+            500
         ).catch(function () {
             console.log("R.O.B. failed to process command!");
         });
 
         // Set command status to AWAITING_STREAM_DELAY
-        cmdObj.status = "AWAITING_STREAM_DELAY";
-        console.log("status: ", cmdObj.status);
+        $actions[index].status = "AWAITING_STREAM_DELAY";
+        console.log("status: ", $actions[index].status);
 
         // Wait 5 seconds
-        await delay(10000);
+        await delay(5000);
 
         // Set command status to COMPLETE
-        cmdObj.status = "COMPLETE";
-        console.log("status: ", cmdObj.status);
+        $actions[index].status = "COMPLETE";
+        console.log("status: ", $actions[index].status);
     };
 </script>
 

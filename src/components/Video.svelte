@@ -1,10 +1,11 @@
 <script>
   import { actions } from '../store.js';
-  let last_command = "";
+
+  let last_cmdObj = { command: "", status: "" };
 
   actions.subscribe(updatedActions => {
     if (updatedActions.length > 0) {
-      last_command = updatedActions[updatedActions.length-1].command;
+      last_cmdObj = updatedActions[updatedActions.length-1];
     }
   });
 </script>
@@ -25,7 +26,7 @@
     <p class="title">
       Last R.O.B. Command
     </p>
-    <p class="command">{last_command}</p>
+    <p class="command">{last_cmdObj.command} | {last_cmdObj.status}</p>
   </div>
 </div>
 
