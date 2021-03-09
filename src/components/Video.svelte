@@ -26,7 +26,7 @@
     <p class="title">
       Last R.O.B. Command
     </p>
-    <p class="command">{last_cmdObj.command} | {last_cmdObj.status}</p>
+    <p class="command">{last_cmdObj.command}  ...  {last_cmdObj.status}</p>
   </div>
 </div>
 

@@ -49,7 +49,7 @@
     };
 
     const poll = async (fn, timeout_ms, interval_ms) => {
-        let endTime = Number(new Date()) + (timeout_ms || 2000);
+        let endTime = Number(new Date()) + (timeout_ms || 3000);
         interval_ms = interval_ms || 100;
 
         const checkCondition = async (resolve, reject) => {
@@ -121,9 +121,7 @@
                 );
                 console.log("Response status:", response.status);
                 return 200 == response.status;
-            },
-            1500,
-            100
+            }
         ).catch((error) => {
             $actions[index].status = "COMMAND FAILED";
             throw new Error(
