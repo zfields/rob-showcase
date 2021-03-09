@@ -1,14 +1,17 @@
 <script>
     const LOCAL_DEV = false;
     let API_URL;
-    let STATUS_URL;
+    let GET_URL;
+    let ORIGIN_URL;
 
     if (LOCAL_DEV) {
         API_URL = "http://localhost:3000/api";
-        STATUS_URL = "http://localhost:3000/status?";
+        GET_URL = "http://localhost:3000/api?";
+        ORIGIN_URL = "http://localhost:3000"
     } else {
         API_URL = "https://rob-proxy.vercel.app/api";
-        STATUS_URL = "https://rob-proxy.vercel.app/status?";
+        GET_URL = "https://rob-proxy.vercel.app/api?";
+        ORIGIN_URL = "https://rob-showcase.vercel.app"
     }
 
     let result = null;
@@ -110,8 +113,9 @@
             async function () {
                 // Check if command has arrived at Notehub.io
                 let response = await fetch(
-                    STATUS_URL + new URLSearchParams($actions[index]),
+                    GET_URL + new URLSearchParams($actions[index]),
                     {
+                        headers: { "Origin": ORIGIN_URL},
                         mode: "cors",
                     }
                 );
@@ -134,8 +138,9 @@
             async function () {
                 // Check if Notehub.io sent Note to R.O.B.
                 let response = await fetch(
-                    STATUS_URL + new URLSearchParams($actions[index]),
+                    GET_URL + new URLSearchParams($actions[index]),
                     {
+                        headers: { "Origin": ORIGIN_URL},
                         mode: "cors",
                     }
                 );
@@ -155,8 +160,9 @@
             async function () {
                 // Check if R.O.B. processed command
                 let response = await fetch(
-                    STATUS_URL + new URLSearchParams($actions[index]),
+                    GET_URL + new URLSearchParams($actions[index]),
                     {
+                        headers: { "Origin": ORIGIN_URL},
                         mode: "cors",
                     }
                 );
