@@ -12,7 +12,7 @@
 
 <div class="video">
   <iframe
-    src="https://player.twitch.tv/?channel=nesroblive&parent=localhost&parent=rob-showcase.vercel.app"
+    src="https://player.twitch.tv/?channel=nesroblive&parent=localhost&parent=rob-showcase.vercel.app&parent=nesrob.live"
     title="Twitch Stream Embed"
     frameborder="0"
     allowfullscreen="true"
