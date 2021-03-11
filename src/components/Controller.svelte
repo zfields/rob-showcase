@@ -11,7 +11,7 @@
     } else {
         API_URL = "https://rob-proxy.vercel.app/api";
         GET_URL = "https://rob-proxy.vercel.app/api?";
-        ORIGIN_URL = "https://rob-showcase.vercel.app"
+        ORIGIN_URL = "https://nesrob.live"
     }
 
     let result = null;
