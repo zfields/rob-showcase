@@ -49,7 +49,7 @@
     };
 
     const poll = async (fn, timeout_ms, interval_ms) => {
-        let endTime = Number(new Date()) + (timeout_ms || 3000);
+        const endTime = Number(new Date()) + (timeout_ms || 3000);
         interval_ms = interval_ms || 100;
 
         const checkCondition = async (resolve, reject) => {
