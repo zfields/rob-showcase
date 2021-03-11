@@ -106,8 +106,8 @@
         // Record request in store
         const index = addToActionList(cmdObj);
 
-        // Set command status to AWAITING_NOTEHUB_IO
-        $actions[index].status = "AWAITING_NOTEHUB_IO";
+        // Set command status to AWAITING NOTEHUB.IO
+        $actions[index].status = "AWAITING NOTEHUB.IO";
         console.log("status: ", $actions[index].status);
         await poll(
             async function () {
@@ -129,8 +129,8 @@
             );
         });
 
-        // Set command status to AWAITING_CELL_TOWER
-        $actions[index].status = "AWAITING_CELL_TOWER";
+        // Set command status to AWAITING CELLULAR NETWORK
+        $actions[index].status = "AWAITING CELLULAR NETWORK";
         console.log("status: ", $actions[index].status);
         await poll(
             async function () {
@@ -151,8 +151,8 @@
             console.log("Notehub.io failed to send Note to R.O.B.!");
         });
 
-        // Set command status to AWAITING_ROB
-        $actions[index].status = "AWAITING_ROB";
+        // Set command status to AWAITING R.O.B.
+        $actions[index].status = "AWAITING R.O.B.";
         console.log("status: ", $actions[index].status);
         await poll(
             async function () {
@@ -173,8 +173,8 @@
             console.log("R.O.B. failed to process command!");
         });
 
-        // Set command status to AWAITING_STREAM_DELAY
-        $actions[index].status = "AWAITING_STREAM_DELAY";
+        // Set command status to AWAITING STREAM DELAY
+        $actions[index].status = "AWAITING STREAM DELAY";
         console.log("status: ", $actions[index].status);
 
         // Wait 5 seconds
